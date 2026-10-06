@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 160 12% 4%;
+    --foreground: 120 6% 92%;
+    --card: 160 10% 6%;
+    --card-foreground: 120 6% 92%;
+    --popover: 160 10% 5%;
+    --popover-foreground: 120 6% 92%;
+    --primary: 84 81% 44%;
+    --primary-foreground: 150 40% 6%;
+    --secondary: 160 8% 12%;
+    --secondary-foreground: 120 6% 92%;
+    --muted: 160 8% 12%;
+    --muted-foreground: 150 4% 52%;
+    --accent: 160 30% 12%;
+    --accent-foreground: 84 90% 62%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 8% 14%;
+    --input: 150 8% 16%;
+    --ring: 84 81% 44%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, hsl(84 81% 44% / 0.06), transparent),
+      linear-gradient(hsl(150 8% 14% / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(150 8% 14% / 0.35) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+  }
+}
+
+@layer utilities {
+  .checkerboard {
+    background-image:
+      linear-gradient(45deg, hsl(150 8% 14%) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(150 8% 14%) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(150 8% 14%) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(150 8% 14%) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: hsl(160 10% 6%);
+  }
+
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(84 81% 44% / 0.02) 2px,
+      hsl(84 81% 44% / 0.02) 4px
+    );
+  }
+
+  .glow-text {
+    text-shadow: 0 0 12px hsl(84 81% 44% / 0.45);
+  }
+
+  .blink {
+    animation: cw-blink 1.1s step-end infinite;
+  }
+
+  @keyframes cw-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
