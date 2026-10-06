@@ -20,11 +20,11 @@ export function AuthLayoutSkeleton() {
 
         {/* User profile area at bottom */}
         <div className="absolute bottom-4 left-4 right-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 px-1">
             <Skeleton className="h-9 w-9 rounded-full" />
-            <div className="space-y-2 flex-1">
-              <Skeleton className="h-4 w-24" />
-              <Skeleton className="h-3 w-32" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-3 w-20" />
+              <Skeleton className="h-2 w-32" />
             </div>
           </div>
         </div>
