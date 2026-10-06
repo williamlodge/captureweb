@@ -62,6 +62,26 @@ runtime image (`PUPPETEER_SKIP_DOWNLOAD=true`). `package-lock.json` is not
 committed — builds use `npm install`; run `npm install` locally after
 cloning to generate your own lockfile.
 
+## Android app (APK)
+
+The app can be packaged as an Android APK with Capacitor. The APK is a
+WebView shell that loads a deployed CaptureWeb instance (`server.url` in
+`capacitor.config.ts`) — the UI, login and captures all run on the server,
+so the site must stay deployed for the app to work.
+
+```bash
+npm install
+# set server.url in capacitor.config.ts to your deployed site first
+npx cap add android        # generates the android/ project (gitignored)
+npx cap sync android
+cd android && ./gradlew assembleDebug
+# APK -> android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+Requires Node 22+, a JDK 21 and the Android SDK (platform 35, build-tools
+35). Open `android/` in Android Studio for a GUI build, or
+`./gradlew assembleRelease` plus a signing keystore for a release build.
+
 ## API
 
 The capture endpoint is a tRPC mutation: `capture.capture` (input validated
